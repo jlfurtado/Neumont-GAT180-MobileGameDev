@@ -11,6 +11,11 @@ public class Timer : MonoBehaviour {
     private bool isOver;
     private const int NUM_CHARS = 6;
 
+    void Start()
+    {
+        TimeRemaining = Difficulty.StartTime;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {

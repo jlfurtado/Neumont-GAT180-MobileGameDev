@@ -9,4 +9,19 @@ public class TitleManager : MonoBehaviour {
     {
         SceneManager.LoadScene(Strings.GameSceneName);
     }
+
+    public void SetEasyTime()
+    {
+        Difficulty.StartTime = 60.0f;
+    }
+
+    public void SetMediumTime()
+    {
+        Difficulty.StartTime = 45.0f;
+    }
+
+    public void SetHardTime()
+    {
+        Difficulty.StartTime = 30.0f;
+    }
 }
