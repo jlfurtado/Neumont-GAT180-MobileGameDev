@@ -60,7 +60,7 @@ public class CardManager : MonoBehaviour {
     public void OnMatched()
     {
         shouldDie = true;
-        startRotate(Vector3.forward, 3.0f*Mathf.PI);
+        startRotate(Vector3.forward, 3.25f*Mathf.PI, 2.75f);
     }
 
     public void StartFlip(Sprite nextSprite)
@@ -69,9 +69,9 @@ public class CardManager : MonoBehaviour {
         startRotate(Vector3.up, Mathf.PI);
     }
 
-    private void startRotate(Vector3 axis, float threshold)
+    private void startRotate(Vector3 axis, float threshold, float multiplier = 1.0f)
     {
-        rotationSpeed = BaseRotationSpeed;
+        rotationSpeed = BaseRotationSpeed * multiplier;
         isRotating = true;
         currentAxis = axis;
         rotationThreshold = threshold;

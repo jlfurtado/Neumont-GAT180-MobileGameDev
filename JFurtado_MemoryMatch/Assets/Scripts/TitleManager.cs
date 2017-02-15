@@ -12,21 +12,21 @@ public class TitleManager : MonoBehaviour {
 
     public void SetEasyTime()
     {
-        Difficulty.StartTime = 60.0f;
+        Difficulty.StartTime = 90.0f;
         Difficulty.Width = 3;
         Difficulty.Height = 2;
     }
 
     public void SetMediumTime()
     {
-        Difficulty.StartTime = 45.0f;
-        Difficulty.Width = 3;
+        Difficulty.StartTime = 60.0f;
+        Difficulty.Width = 4;
         Difficulty.Height = 3;
     }
 
     public void SetHardTime()
     {
-        Difficulty.StartTime = 30.0f;
+        Difficulty.StartTime = 45.0f;
         Difficulty.Width = 5;
         Difficulty.Height = 4;
     }
