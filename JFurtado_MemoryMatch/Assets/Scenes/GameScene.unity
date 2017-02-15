@@ -643,7 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardPrefab: {fileID: 1742894063303928, guid: 4b873f5ab9edfb94f8581ec885d698cb, type: 2}
   CardHolder: {fileID: 1644762401}
-  cardSizeFactorX: 3
+  cardSizeFactorX: 6
   cardSizeFactorY: 3
   spacingX: 2
   spacingY: 2

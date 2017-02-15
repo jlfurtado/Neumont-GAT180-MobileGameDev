@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour {
         float cardScaleY = cardSizeFactorY / height;
 
         // TODO DITCH MIDDLE CARD + CENTER ON PARENT
-        float halfWidth = width / 2 - 0.5f;
-        float halfHeight = height / 2 - 0.5f;
+        float halfWidth = width / 2.0f - 0.5f;
+        float halfHeight = height / 2.0f - 0.5f;
         for (int x = 0; x < width; ++x)
         {
             for (int y = 0; y < height; ++y)
