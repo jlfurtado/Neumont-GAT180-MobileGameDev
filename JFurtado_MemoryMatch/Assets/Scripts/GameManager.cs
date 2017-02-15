@@ -34,13 +34,12 @@ public class GameManager : MonoBehaviour {
         float cardScaleX = cardSizeFactorX / width;
         float cardScaleY = cardSizeFactorY / height;
 
-        Sprite[] cardHolderImages = CardHolder.GetComponent<CardGameManager>().cardImages;
-
         // TODO DITCH MIDDLE CARD + CENTER ON PARENT
         float halfWidth = width / 2.0f - 0.5f;
         float halfHeight = height / 2.0f - 0.5f;
         int next = 0;
         int mod = (width * height)/2;
+        CardHolder.GetComponent<CardGameManager>().NumCardPairs = mod;
         for (int x = 0; x < width; ++x)
         {
             for (int y = 0; y < height; ++y)
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour {
                 if (IsCenterCard(x, y, width, height)) { continue; }
                 GameObject currentCard = Instantiate(CardPrefab, new Vector3(cardScaleX * (x - halfWidth) * spacingX, cardScaleY * (y - halfHeight) * spacingY, 0.0f), new Quaternion(), CardHolder.transform);
                 currentCard.transform.localScale = new Vector3(cardScaleX, cardScaleY, 1.0f);
-                currentCard.GetComponent<SpriteRenderer>().sprite = cardHolderImages[next];
+                currentCard.GetComponent<SpriteRenderer>().sprite = CardHolder.GetComponent<CardGameManager>().cardBackImage;
                 currentCard.GetComponent<CardManager>().ImageIndex = next;
                 next = ((next + 1) % mod);
             }

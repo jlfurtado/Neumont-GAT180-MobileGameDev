@@ -788,6 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsCardRotating: 0
+  GM: {fileID: 1218711589}
   cardImages:
   - {fileID: 21300000, guid: 940113fcf23ec9e47b3b1edc7c961503, type: 3}
   - {fileID: 21300000, guid: 08b5b1903dfc45f48aac85dbf07f386f, type: 3}
@@ -799,6 +800,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e00d1111722e83a4f97e7f22606bfcba, type: 3}
   - {fileID: 21300000, guid: 542ea0266adfdd74fb28cbbd5fbae4fa, type: 3}
   - {fileID: 21300000, guid: 0106d266b62bb5d4a87a9749230ad069, type: 3}
+  cardBackImage: {fileID: 21300000, guid: 76b4a5c81d0fed34f80606055a658c17, type: 3}
+  NumCardPairs: 0
 --- !u!1 &1658708058
 GameObject:
   m_ObjectHideFlags: 0

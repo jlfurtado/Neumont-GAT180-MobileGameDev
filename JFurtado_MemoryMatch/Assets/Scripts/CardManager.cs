@@ -9,13 +9,16 @@ public class CardManager : MonoBehaviour {
     private float rotation = 0.0f;
     private float rotationSpeed = 0.0f;
     private float rotationThreshold = Mathf.PI;
-    private bool isRotating = false; // TODO: MANAGER!?!?!?
+    public bool isRotating = false;
     private CardGameManager cgm;
+    private SpriteRenderer sr;
+    private Sprite nextSprite;
     private Vector3 currentAxis;
     private bool shouldDie;
 
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         cgm = transform.parent.gameObject.GetComponent<CardGameManager>();
         shouldDie = false;
     }
@@ -25,6 +28,12 @@ public class CardManager : MonoBehaviour {
         float rotateAmount = rotationSpeed * Time.deltaTime;
         transform.RotateAround(currentAxis, rotateAmount);
         rotation += rotateAmount;
+
+        if (nextSprite != null && rotation > 0.5f * rotationThreshold)
+        {
+            sr.sprite = nextSprite;
+            nextSprite = null;
+        }
 
         if (rotation > rotationThreshold)
         {
@@ -52,8 +61,9 @@ public class CardManager : MonoBehaviour {
         startRotate(Vector3.forward, 3.0f*Mathf.PI);
     }
 
-    public void StartFlip()
+    public void StartFlip(Sprite nextSprite)
     {
+        this.nextSprite = nextSprite;
         startRotate(Vector3.up, Mathf.PI);
     }
 
