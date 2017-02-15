@@ -39,16 +39,20 @@ public class GameManager : MonoBehaviour {
         float halfHeight = height / 2.0f - 0.5f;
         int next = 0;
         int mod = (width * height)/2;
-        CardHolder.GetComponent<CardGameManager>().NumCardPairs = mod;
+        CardGameManager cgm = CardHolder.GetComponent<CardGameManager>();
+        cgm.NumCardPairs = mod;
         for (int x = 0; x < width; ++x)
         {
             for (int y = 0; y < height; ++y)
             {
                 if (IsCenterCard(x, y, width, height)) { continue; }
                 GameObject currentCard = Instantiate(CardPrefab, new Vector3(cardScaleX * (x - halfWidth) * spacingX, cardScaleY * (y - halfHeight) * spacingY, 0.0f), new Quaternion(), CardHolder.transform);
+                CardManager cm = currentCard.GetComponent<CardManager>();
+
                 currentCard.transform.localScale = new Vector3(cardScaleX, cardScaleY, 1.0f);
-                currentCard.GetComponent<SpriteRenderer>().sprite = CardHolder.GetComponent<CardGameManager>().cardBackImage;
-                currentCard.GetComponent<CardManager>().ImageIndex = next;
+                currentCard.GetComponent<SpriteRenderer>().sprite = cgm.cardBackImage;
+                cm.ImageIndex = next;
+                cm.StartFlip(cgm.cardImages[next]);
                 next = ((next + 1) % mod);
             }
         }

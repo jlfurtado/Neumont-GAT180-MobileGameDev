@@ -15,12 +15,14 @@ public class CardManager : MonoBehaviour {
     private Sprite nextSprite;
     private Vector3 currentAxis;
     private bool shouldDie;
+    private bool initialAnimation;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         cgm = transform.parent.gameObject.GetComponent<CardGameManager>();
         shouldDie = false;
+        initialAnimation = true;
     }
 
     // Update is called once per frame
@@ -38,8 +40,8 @@ public class CardManager : MonoBehaviour {
         if (rotation > rotationThreshold)
         {
             stopRotate();
-
-            if (shouldDie)
+            if (initialAnimation) { StartFlip(transform.parent.gameObject.GetComponent<CardGameManager>().cardBackImage); initialAnimation = false; }
+            else if (shouldDie)
             {
                 this.GetComponent<Renderer>().enabled = false;
                 this.enabled = false;
