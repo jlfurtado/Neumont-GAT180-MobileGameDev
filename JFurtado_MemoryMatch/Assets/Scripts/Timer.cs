@@ -32,6 +32,6 @@ public class Timer : MonoBehaviour {
     private void SetText()
     {
         string timeString = TimeRemaining.ToString();
-        TimeRemainingText.text = "Text: " + timeString.Substring(0, Mathf.Min(NUM_CHARS, timeString.Length));
+        TimeRemainingText.text = "Time: " + timeString.Substring(0, Mathf.Min(NUM_CHARS, timeString.Length));
     }
 }
