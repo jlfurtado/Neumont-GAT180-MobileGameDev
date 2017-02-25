@@ -9,4 +9,22 @@ public class LevelSelectMover : MonoBehaviour {
     {
         SceneManager.LoadScene(Strings.LEVEL_ONE_SCENE_NAME);
     }
+
+
+    public void MoveToLevelTwo()
+    {
+        SceneManager.LoadScene(Strings.LEVEL_TWO_SCENE_NAME);
+    }
+
+
+    public void MoveToLevelThree()
+    {
+        SceneManager.LoadScene(Strings.LEVEL_THREE_SCENE_NAME);
+    }
+
+
+    public void MoveToLevelFour()
+    {
+        SceneManager.LoadScene(Strings.LEVEL_FOUR_SCENE_NAME);
+    }
 }
