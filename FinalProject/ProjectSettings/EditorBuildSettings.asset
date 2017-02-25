@@ -11,3 +11,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelectScene.unity
   - enabled: 1
     path: Assets/Scenes/LevelOneScene.unity
+  - enabled: 1
+    path: Assets/Scenes/LevelTwoScene.unity
+  - enabled: 1
+    path: Assets/Scenes/LevelThreeScene.unity
+  - enabled: 1
+    path: Assets/Scenes/LevelFourScene.unity
