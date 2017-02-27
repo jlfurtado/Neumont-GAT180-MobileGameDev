@@ -537,7 +537,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 89767176
+  randomSeed: -1497700388
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -996,9 +996,9 @@ ParticleSystem:
     radius: 1
     angle: 25
     length: 5
-    boxX: 20
+    boxX: 40
     boxY: 20
-    boxZ: 20
+    boxZ: 40
     arc: 360
     placementMode: 0
     m_Mesh: {fileID: 0}
