@@ -12,7 +12,6 @@ public class ChargeBarController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         heightStore = frontImage.rectTransform.sizeDelta.y;
-
     }
 	
 	// Update is called once per frame

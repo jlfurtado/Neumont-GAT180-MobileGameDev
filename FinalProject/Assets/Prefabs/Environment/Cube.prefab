@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23248406950427070}
   - component: {fileID: 54492441837144430}
   - component: {fileID: 114340219076205500}
+  - component: {fileID: 114650331053232936}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -121,3 +122,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   YDestroyThreshold: -50
+--- !u!114 &114650331053232936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1197232668353976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd892c927bab0b419456c155a0cf942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 10
+  scoreManagerRef: {fileID: 0}
