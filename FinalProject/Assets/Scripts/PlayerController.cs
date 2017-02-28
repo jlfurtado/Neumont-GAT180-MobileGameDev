@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     private const float maxRotationX = 45.0f;
     private const float minRotationX = -45.0f;
     private const float maxPowerHoldTime = 3.0f;
-    private const float minFireHoldTime = 1.0f;
+    private const float minFireHoldTime = 0.1f;
     //private const float fireScaleThreshold = maxPowerHoldTime - minFireHoldTime;
 
     // Use this for initialization
@@ -45,17 +45,23 @@ public class PlayerController : MonoBehaviour {
         }
         else if (Input.GetKeyUp(KeyCode.Space) && (timer > minFireHoldTime))
         {
+            float launchStrength = GetLaunchStrength();
+
             // TODO: LIMIT FIRE RATE
             // TODO: ON-SCREEN LAUNCH STRENGTH INDICATOR
-            float launchStrength = Mathf.Clamp(timer / maxPowerHoldTime, 0.0f, 1.0f);
             Vector3 launchDirection  = this.transform.rotation * Vector3.up;
 
             Vector3 launchPos = transform.position + launchDirection * OffsetInLaunchDir;
             GameObject projectile = Instantiate(projectilePrefab, launchPos, Quaternion.identity);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.AddForce(launchDirection * launchStrength * LaunchForceStrength);
-            
+            timer = 0.0f;
         }
+    }
+
+    public float GetLaunchStrength()
+    {
+        return Mathf.Clamp(timer / maxPowerHoldTime, 0.0f, 1.0f);
     }
 
     private void UpdateRotation()
