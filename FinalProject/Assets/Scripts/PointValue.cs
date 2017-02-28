@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PointValue : MonoBehaviour {
-    public long pointValue = 10L;
+    public int pointValue = 10;
     public ScoreManager scoreManagerRef;
 
 

@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
     public Text scoreText;
-    private long scoreValue;
-    
-    public void AddScore(long value)
+    public int levelIndex = 0;
+    private int scoreValue = 0;
+    private int highScore = 0;
+
+    void Start()
+    {
+        highScore = PlayerPrefs.GetInt(Strings.HIGH_SCORE_KEYS[levelIndex], 0);
+    }
+
+    public void AddScore(int value)
     {
         scoreValue += value;
         SetScoreText();
@@ -18,4 +25,12 @@ public class ScoreManager : MonoBehaviour {
         scoreText.text = "Score: " + scoreValue;
     }
     
+    void OnDisable()
+    {
+        if (scoreValue > highScore)
+        {
+            PlayerPrefs.SetInt(Strings.HIGH_SCORE_KEYS[levelIndex], scoreValue);
+            PlayerPrefs.Save();
+        }
+    }
 }

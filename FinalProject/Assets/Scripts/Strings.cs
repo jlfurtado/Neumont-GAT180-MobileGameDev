@@ -12,7 +12,7 @@ static class Strings
     public static string LEVEL_TWO_SCENE_NAME = "LevelTwoScene";
     public static string LEVEL_THREE_SCENE_NAME = "LevelThreeScene";
     public static string LEVEL_FOUR_SCENE_NAME = "LevelFourScene";
-
+    public static string[] HIGH_SCORE_KEYS = { "HighScoreLVL1", "HighScoreLVL2", "HighScoreLVL3", "HighScoreLVL4" };
 
 }
 
