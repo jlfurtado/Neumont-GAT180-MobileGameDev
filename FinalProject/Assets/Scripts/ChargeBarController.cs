@@ -18,5 +18,6 @@ public class ChargeBarController : MonoBehaviour {
 	void Update () {
         float currentWidth = playerController.GetLaunchStrength() * backImage.rectTransform.sizeDelta.x;
         frontImage.rectTransform.sizeDelta = new Vector2(currentWidth, heightStore);
+        //frontImage.enabled = currentWidth > 0.0f;
 	}
 }

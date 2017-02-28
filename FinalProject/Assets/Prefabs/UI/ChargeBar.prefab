@@ -101,8 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backImage: {fileID: 114590290390337626}
   frontImage: {fileID: 114018067576654810}
-  playerController: {fileID: 114697155908912668, guid: 5c45c062449fad14686615c823585b69,
-    type: 2}
+  playerController: {fileID: 0}
 --- !u!114 &114590290390337626
 MonoBehaviour:
   m_ObjectHideFlags: 1
