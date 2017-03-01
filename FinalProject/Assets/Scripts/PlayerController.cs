@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public float OffsetInLaunchDir = 1.75f;
     public float LaunchForceStrength = 25.0f;
     public GameObject projectilePrefab;
+    public LevelManager levelManager;
 
     private float timer = 0.0f;
     private float totalRotationX = 0.0f;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleFiring()
     {
+        if (!levelManager.AreShotsLeft()) { return; }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             timer = 0.0f;
@@ -45,18 +48,25 @@ public class PlayerController : MonoBehaviour {
         }
         else if (Input.GetKeyUp(KeyCode.Space) && (timer > minFireHoldTime))
         {
-            float launchStrength = GetLaunchStrength();
-
-            // TODO: LIMIT FIRE RATE
-            // TODO: ON-SCREEN LAUNCH STRENGTH INDICATOR
-            Vector3 launchDirection  = this.transform.rotation * Vector3.up;
-
-            Vector3 launchPos = transform.position + launchDirection * OffsetInLaunchDir;
-            GameObject projectile = Instantiate(projectilePrefab, launchPos, Quaternion.identity);
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.AddForce(launchDirection * launchStrength * LaunchForceStrength);
+            MakeShot();
             timer = 0.0f;
         }
+    }
+
+    private void MakeShot()
+    {
+        float launchStrength = GetLaunchStrength();
+        Vector3 launchDirection = this.transform.rotation * Vector3.up;
+        Vector3 launchPos = transform.position + launchDirection * OffsetInLaunchDir;
+        GameObject projectile = Instantiate(projectilePrefab, launchPos, Quaternion.identity);
+
+        projectile.GetComponent<NotifyWhenDestroyed>().levelManager = levelManager;
+        projectile.GetComponent<ResetMeIfNotMoving>().levelManager = levelManager;
+
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        rb.AddForce(launchDirection * launchStrength * LaunchForceStrength);
+
+        levelManager.OnFireShot();
     }
 
     public float GetLaunchStrength()
