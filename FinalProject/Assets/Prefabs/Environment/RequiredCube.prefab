@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27aeb7cf78dd9d14bba5ecffe99d3058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
 --- !u!114 &114340219076205500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,5 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd892c927bab0b419456c155a0cf942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointValue: 100
+  pointValue: 250
   scoreManagerRef: {fileID: 0}
