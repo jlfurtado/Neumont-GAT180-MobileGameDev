@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour {
         float launchStrength = GetLaunchStrength();
         Vector3 launchDirection = this.transform.rotation * Vector3.up;
         Vector3 launchPos = transform.position + launchDirection * OffsetInLaunchDir;
+        // TODO: NO MORE! POOLING INSTEAD!!!!
         GameObject projectile = Instantiate(projectilePrefab, launchPos, Quaternion.identity);
 
         projectile.GetComponent<NotifyWhenDestroyed>().levelManager = levelManager;

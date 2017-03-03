@@ -21,6 +21,7 @@ public class DestroyWhenBelow : MonoBehaviour {
     {
         DoGiveScoreForThisIfShould();
         DoNotifyDestroyIfShould();
+        DoSubtractRequiredIfShould();
 
         gameObject.SetActive(false);
         gameObject.GetComponent<Renderer>().enabled = false;
@@ -39,4 +40,9 @@ public class DestroyWhenBelow : MonoBehaviour {
         if (nf != null) { nf.GoPoof(); }
     }
 
+    private void DoSubtractRequiredIfShould()
+    {
+        SubtractFromRequiredCounter sfr = GetComponent<SubtractFromRequiredCounter>();
+        if (sfr != null) { sfr.MeIsGone(); }
+    }
 }

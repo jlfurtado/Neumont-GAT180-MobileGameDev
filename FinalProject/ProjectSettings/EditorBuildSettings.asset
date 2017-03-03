@@ -19,3 +19,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelFourScene.unity
   - enabled: 1
     path: Assets/Scenes/OptionsScene.unity
+  - enabled: 1
+    path: Assets/Scenes/LevelLostScene.unity
+  - enabled: 1
+    path: Assets/Scenes/LevelWonScene.unity

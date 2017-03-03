@@ -10,6 +10,16 @@ public class SceneMover : MonoBehaviour {
         SceneManager.LoadScene(Strings.TITLE_SCENE_NAME);
     }
 
+    public void MoveToVictory()
+    {
+        SceneManager.LoadScene(Strings.LEVEL_WON_SCENE_NAME);
+    }
+
+    public void MoveToLoss()
+    {
+        SceneManager.LoadScene(Strings.LEVEL_LOST_SCENE_NAME);
+    }
+
     public void MoveToLevelSelect()
     {
         SceneManager.LoadScene(Strings.LEVEL_SELECT_SCENE_NAME);

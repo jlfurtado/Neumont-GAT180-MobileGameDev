@@ -6,15 +6,29 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour {
     public Text shotsRemainingText;
     public SceneMover sceneMover;
+    public ScoreManager scoreManager;
     public int maxShots = 5;
     private int currentShots;
     private int shotsToDie;
+    public int totalRequiredObjects = 3;
+    private int currentRequiredObjectsLeft;
 
     // Use this for initialization
     void Start() {
         shotsToDie = 0;
         currentShots = maxShots;
         SetShotText();
+        currentRequiredObjectsLeft = totalRequiredObjects;
+    }
+
+    public void OnRequiredObjectDestroyed()
+    {
+        currentRequiredObjectsLeft--;
+
+        if (currentRequiredObjectsLeft <= 0)
+        {
+            OnLevelWin();
+        }
     }
 
     public void OnFireShot()
@@ -30,7 +44,7 @@ public class LevelManager : MonoBehaviour {
 
         if (shotsToDie <= 0 && currentShots <= 0)
         {
-            sceneMover.MoveToTitle(); // TODO: MOVE TO VICTORY/GAMEOVER
+            sceneMover.MoveToLoss(); // TODO: MOVE TO VICTORY/GAMEOVER
         }
     }
 
@@ -56,5 +70,11 @@ public class LevelManager : MonoBehaviour {
     public bool AreShotsLeft()
     {
         return currentShots > 0;
+    }
+
+    private void OnLevelWin()
+    {
+        scoreManager.SetDidWin(true);
+        sceneMover.MoveToVictory();
     }
 }

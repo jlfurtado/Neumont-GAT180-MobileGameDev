@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManager: {fileID: 0}
-  threshold: 0.001
-  thresholdTime: 1
+  threshold: 0.1
+  thresholdTime: 3
 --- !u!114 &114429140338617198
 MonoBehaviour:
   m_ObjectHideFlags: 1

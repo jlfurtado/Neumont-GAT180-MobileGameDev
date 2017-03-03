@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
+    public static int storeScore;
     public Text scoreText;
     public int levelIndex = 0;
     private int scoreValue = 0;
     private int highScore = 0;
+    private bool didWin = false;
 
     void Start()
     {
@@ -25,9 +27,16 @@ public class ScoreManager : MonoBehaviour {
         scoreText.text = "Score: " + scoreValue;
     }
     
+    public void SetDidWin(bool won)
+    {
+        didWin = won;
+    }
+
     void OnDisable()
     {
-        if (scoreValue > highScore)
+        storeScore = scoreValue;
+
+        if (scoreValue > highScore && didWin)
         {
             PlayerPrefs.SetInt(Strings.HIGH_SCORE_KEYS[levelIndex], scoreValue);
             PlayerPrefs.Save();
