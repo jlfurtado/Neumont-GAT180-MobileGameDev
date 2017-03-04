@@ -59,7 +59,6 @@ public class LevelManager : MonoBehaviour {
 
         shot.SetActive(false);
         shot.GetComponent<Renderer>().enabled = false;
-        Destroy(shot);
     }
 
     private void SetShotText()
@@ -70,6 +69,11 @@ public class LevelManager : MonoBehaviour {
     public bool AreShotsLeft()
     {
         return currentShots > 0;
+    }
+
+    public int GetNextShotIndex()
+    {
+        return Mathf.Clamp(maxShots - currentShots, 0, maxShots - 1);
     }
 
     private void OnLevelWin()

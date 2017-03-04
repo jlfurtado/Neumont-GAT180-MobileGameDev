@@ -22,10 +22,20 @@ public class PlayerController : MonoBehaviour {
     private const float maxPowerHoldTime = 3.0f;
     private const float minFireHoldTime = 0.1f;
     //private const float fireScaleThreshold = maxPowerHoldTime - minFireHoldTime;
+    private GameObject[] bullets;
 
     // Use this for initialization
     void Start () {
-		
+        bullets = new GameObject[levelManager.maxShots];
+
+        for (int i = 0; i < levelManager.maxShots; ++i)
+        {
+            bullets[i] = Instantiate(projectilePrefab);
+
+            bullets[i].GetComponent<NotifyWhenDestroyed>().levelManager = levelManager;
+            bullets[i].GetComponent<ResetMeIfNotMoving>().levelManager = levelManager;
+            DisableGameObject(bullets[i]);
+        }
 	}
 	
 	// Update is called once per frame
@@ -58,13 +68,12 @@ public class PlayerController : MonoBehaviour {
         float launchStrength = GetLaunchStrength();
         Vector3 launchDirection = this.transform.rotation * Vector3.up;
         Vector3 launchPos = transform.position + launchDirection * OffsetInLaunchDir;
-        // TODO: NO MORE! POOLING INSTEAD!!!!
-        GameObject projectile = Instantiate(projectilePrefab, launchPos, Quaternion.identity);
 
-        projectile.GetComponent<NotifyWhenDestroyed>().levelManager = levelManager;
-        projectile.GetComponent<ResetMeIfNotMoving>().levelManager = levelManager;
+        int newBullet = levelManager.GetNextShotIndex();
+        EnableGameObject(bullets[newBullet]);
+        bullets[newBullet].transform.position = launchPos;
 
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        Rigidbody rb = bullets[newBullet].GetComponent<Rigidbody>();
         rb.AddForce(launchDirection * launchStrength * LaunchForceStrength);
 
         levelManager.OnFireShot();
@@ -85,5 +94,17 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 rotation = new Vector3(totalRotationX, totalRotationY, 0.0f);
         this.transform.rotation = Quaternion.Euler(rotation);
+    }
+
+    private void EnableGameObject(GameObject objectToEnable)
+    {
+        objectToEnable.SetActive(true);
+        objectToEnable.GetComponent<Renderer>().enabled = true;
+    }
+
+    private void DisableGameObject(GameObject objectToDisable)
+    {
+        objectToDisable.SetActive(false);
+        objectToDisable.GetComponent<Renderer>().enabled = false;
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyWhenBelow : MonoBehaviour {
+public class DisableWhenBelow : MonoBehaviour {
 
     public float YDestroyThreshold = 0.0f;
     private bool isMeGone = false;
@@ -25,7 +25,6 @@ public class DestroyWhenBelow : MonoBehaviour {
 
         gameObject.SetActive(false);
         gameObject.GetComponent<Renderer>().enabled = false;
-        Destroy(gameObject);
     }
 
     private void DoGiveScoreForThisIfShould()
