@@ -17,6 +17,12 @@ public class ResetMeIfNotMoving : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
     }
 
+    public void ResetReset()
+    {
+        timer = 0.0f;
+        alreadyReset = false;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -25,8 +31,8 @@ public class ResetMeIfNotMoving : MonoBehaviour {
 
         if (!alreadyReset && timer > thresholdTime)
         {
-            levelManager.ResetShot(gameObject);
             alreadyReset = true;
+            levelManager.ResetShot(gameObject);
         }
 	}
 }

@@ -16,6 +16,10 @@ public class DisableWhenBelow : MonoBehaviour {
             isMeGone = true;
         }
     }
+    public void Reset()
+    {
+        isMeGone = false;
+    }
 
     private void GetRidOfMe()
     {

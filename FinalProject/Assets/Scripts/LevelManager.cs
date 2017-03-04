@@ -52,6 +52,12 @@ public class LevelManager : MonoBehaviour {
     {
         // TODO: validate shot is a projectile!??!?!
 
+        ResetMeIfNotMoving rminm = shot.GetComponent<ResetMeIfNotMoving>();
+        if (rminm != null) { rminm.ResetReset(); }
+
+        DisableWhenBelow dbw = shot.GetComponent<DisableWhenBelow>();
+        if (dbw != null) { dbw.Reset(); }
+
         shotsToDie--;
         currentShots++;
 
