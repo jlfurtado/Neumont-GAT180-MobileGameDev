@@ -65,6 +65,9 @@ public class LevelManager : MonoBehaviour {
 
         shot.SetActive(false);
         shot.GetComponent<Renderer>().enabled = false;
+        Rigidbody rbs = shot.GetComponent<Rigidbody>();
+        rbs.velocity = Vector3.zero;
+        rbs.angularVelocity = Vector3.zero;
     }
 
     private void SetShotText()
