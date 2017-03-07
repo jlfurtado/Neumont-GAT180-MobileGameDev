@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
     public Text shotsRemainingText;
+    public int pointsPerExtraBall = 1000;
     public SceneMover sceneMover;
     public ScoreManager scoreManager;
     public int maxShots = 5;
@@ -44,7 +45,7 @@ public class LevelManager : MonoBehaviour {
 
         if (shotsToDie <= 0 && currentShots <= 0)
         {
-            sceneMover.MoveToLoss(); // TODO: MOVE TO VICTORY/GAMEOVER
+            OnLevelLose();
         }
     }
 
@@ -65,6 +66,11 @@ public class LevelManager : MonoBehaviour {
 
         shot.SetActive(false);
         shot.GetComponent<Renderer>().enabled = false;
+        StopShot(shot);
+    }
+
+    private void StopShot(GameObject shot)
+    {
         Rigidbody rbs = shot.GetComponent<Rigidbody>();
         rbs.velocity = Vector3.zero;
         rbs.angularVelocity = Vector3.zero;
@@ -87,7 +93,19 @@ public class LevelManager : MonoBehaviour {
 
     private void OnLevelWin()
     {
+        AddEndScore();
         scoreManager.SetDidWin(true);
         sceneMover.MoveToVictory();
+    }
+
+    private void OnLevelLose()
+    {
+        AddEndScore();
+        sceneMover.MoveToLoss();
+    }
+
+    private void AddEndScore()
+    {
+        scoreManager.AddScore(pointsPerExtraBall * currentShots);
     }
 }

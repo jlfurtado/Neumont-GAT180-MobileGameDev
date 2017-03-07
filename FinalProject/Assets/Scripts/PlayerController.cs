@@ -74,9 +74,16 @@ public class PlayerController : MonoBehaviour {
         bullets[newBullet].transform.position = launchPos;
 
         Rigidbody rb = bullets[newBullet].GetComponent<Rigidbody>();
-        rb.AddForce(launchDirection * launchStrength * LaunchForceStrength);
+        StopRB(rb);
 
+        rb.AddForce(launchDirection * launchStrength * LaunchForceStrength);
         levelManager.OnFireShot();
+    }
+
+    private void StopRB(Rigidbody rb)
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     public float GetLaunchStrength()

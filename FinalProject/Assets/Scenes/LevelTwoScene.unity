@@ -122,7 +122,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ee41504d1928eee42ad4b35e5361c935, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,6 +228,16 @@ Prefab:
         type: 2}
       propertyPath: levelIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114594549246799814, guid: a13138910692bdf4d8c8f8a96d3bdf6d,
+        type: 2}
+      propertyPath: bonusText
+      value: 
+      objectReference: {fileID: 990426209}
+    - target: {fileID: 114594549246799814, guid: a13138910692bdf4d8c8f8a96d3bdf6d,
+        type: 2}
+      propertyPath: displayTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a13138910692bdf4d8c8f8a96d3bdf6d, type: 2}
@@ -534,6 +544,106 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224660568630425786, guid: 09fe5b862e6c60741ac6405c78b8f2b7,
     type: 2}
   m_PrefabInternal: {fileID: 1161959854}
+--- !u!1001 &659366302
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1356150799}
+    m_Modifications:
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &734026906 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4849606783126710, guid: 7ae3e83507a3a3c41aac0674ae2451f9,
@@ -658,6 +768,17 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c45c062449fad14686615c823585b69, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &990426209 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114301260674151030, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+    type: 2}
+  m_PrefabInternal: {fileID: 659366302}
+  m_Script: {fileID: 11500000, guid: ce6c319230d39c541ae75986120559cd, type: 3}
+--- !u!224 &990426212 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224952476936477928, guid: 8f245604f2ae7fc42ad5d76bb1f46f9f,
+    type: 2}
+  m_PrefabInternal: {fileID: 659366302}
 --- !u!1001 &1161959854
 Prefab:
   m_ObjectHideFlags: 0
@@ -850,6 +971,7 @@ RectTransform:
   - {fileID: 654608530}
   - {fileID: 237607449}
   - {fileID: 530249647}
+  - {fileID: 990426212}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1342,7 +1464,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7585a46ffbbb5d84c82360373eabeaf2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

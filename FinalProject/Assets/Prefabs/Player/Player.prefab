@@ -106,7 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalRotateSpeed: 0.4
   VerticalRotateSpeed: 0.4
-  OffsetInLaunchDir: 1.75
+  OffsetInLaunchDir: 1.85
   LaunchForceStrength: 1500
   projectilePrefab: {fileID: 1158092210747802, guid: b479e5ed8289cb2489053df0998e1bbf,
     type: 2}
+  levelManager: {fileID: 0}

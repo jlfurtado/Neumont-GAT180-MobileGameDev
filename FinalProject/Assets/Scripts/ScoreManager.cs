@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour {
     public static int storeScore;
     public Text scoreText;
+    public BonusText bonusText;
+    public float displayTime;
     public int levelIndex = 0;
     private int scoreValue = 0;
     private int highScore = 0;
@@ -20,6 +22,7 @@ public class ScoreManager : MonoBehaviour {
     {
         scoreValue += value;
         SetScoreText();
+        bonusText.ResetText(value, displayTime);
     }
 
     private void SetScoreText()
