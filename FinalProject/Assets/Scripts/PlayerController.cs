@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     public LevelManager levelManager;
 
     private float timer = 0.0f;
-    private float totalRotationX = 0.0f;
+    private float totalRotationX = 45.0f;
     private float totalRotationY = 0.0f;
 
     private const float maxRotationY = 90.0f;
