@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
     public Text shotsRemainingText;
+    public Text goldCubesRemainingText;
     public int pointsPerExtraBall = 1000;
     public SceneMover sceneMover;
     public ScoreManager scoreManager;
@@ -13,6 +14,8 @@ public class LevelManager : MonoBehaviour {
     private int shotsToDie;
     public int totalRequiredObjects = 3;
     private int currentRequiredObjectsLeft;
+    private const float loseWinCheckTime = 3.0f;
+    private bool didWinOrLose = false;
 
     // Use this for initialization
     void Start() {
@@ -20,16 +23,33 @@ public class LevelManager : MonoBehaviour {
         currentShots = maxShots;
         SetShotText();
         currentRequiredObjectsLeft = totalRequiredObjects;
+        SetGoldCubesText();
+
+        StartCoroutine(CheckLoseWin(loseWinCheckTime));
+    }
+
+    private IEnumerator CheckLoseWin(float interval)
+    {
+        while (!didWinOrLose)
+        { 
+            // if both win and lose conditions are true, give the player victory
+            if (currentRequiredObjectsLeft <= 0)
+            {
+                OnLevelWin();
+            }
+            else if (shotsToDie <= 0 && currentShots <= 0)
+            {
+                OnLevelLose();
+            }
+
+            yield return new WaitForSeconds(interval);
+        }
     }
 
     public void OnRequiredObjectDestroyed()
     {
         currentRequiredObjectsLeft--;
-
-        if (currentRequiredObjectsLeft <= 0)
-        {
-            OnLevelWin();
-        }
+        SetGoldCubesText();
     }
 
     public void OnFireShot()
@@ -42,38 +62,18 @@ public class LevelManager : MonoBehaviour {
     public void OnProjectileDestroyed()
     {
         shotsToDie--;
-
-        if (shotsToDie <= 0 && currentShots <= 0)
-        {
-            OnLevelLose();
-        }
     }
 
     public void ResetShot(GameObject shot)
     {
-        // TODO: validate shot is a projectile!??!?!
-
-        ResetMeIfNotMoving rminm = shot.GetComponent<ResetMeIfNotMoving>();
-        if (rminm != null) { rminm.ResetReset(); }
-
-        DisableWhenBelow dbw = shot.GetComponent<DisableWhenBelow>();
-        if (dbw != null) { dbw.Reset(); }
+        ResetShotCompletely(shot);
 
         shotsToDie--;
         currentShots++;
 
         SetShotText();
 
-        shot.SetActive(false);
-        shot.GetComponent<Renderer>().enabled = false;
-        StopShot(shot);
-    }
-
-    private void StopShot(GameObject shot)
-    {
-        Rigidbody rbs = shot.GetComponent<Rigidbody>();
-        rbs.velocity = Vector3.zero;
-        rbs.angularVelocity = Vector3.zero;
+        DisableGameObject(shot);
     }
 
     private void SetShotText()
@@ -81,18 +81,19 @@ public class LevelManager : MonoBehaviour {
         shotsRemainingText.text = "Shots Remaining: " + currentShots;
     }
 
+    private void SetGoldCubesText()
+    {
+        goldCubesRemainingText.text = "Gold Cubes Left: " + currentRequiredObjectsLeft;
+    }
+
     public bool AreShotsLeft()
     {
         return currentShots > 0;
     }
 
-    public int GetNextShotIndex()
-    {
-        return Mathf.Clamp(maxShots - currentShots, 0, maxShots - 1);
-    }
-
     private void OnLevelWin()
     {
+        didWinOrLose = true;
         AddEndScore();
         scoreManager.SetDidWin(true);
         sceneMover.MoveToVictory();
@@ -100,6 +101,7 @@ public class LevelManager : MonoBehaviour {
 
     private void OnLevelLose()
     {
+        didWinOrLose = true;
         AddEndScore();
         sceneMover.MoveToLoss();
     }
@@ -107,5 +109,30 @@ public class LevelManager : MonoBehaviour {
     private void AddEndScore()
     {
         scoreManager.AddScore(pointsPerExtraBall * currentShots);
+    }
+
+    public static void ResetShotCompletely(GameObject shot)
+    {
+        ResetMeIfNotMoving rminm = shot.GetComponent<ResetMeIfNotMoving>();
+        if (rminm != null) { rminm.ResetReset(); } else { Debug.Log("MAYBE NOT A SHOT"); }
+
+        DisableWhenBelow dbw = shot.GetComponent<DisableWhenBelow>();
+        if (dbw != null) { dbw.Reset(); } else { Debug.Log("MAYBE NOT A SHOT"); }
+
+        Rigidbody rb = shot.GetComponent<Rigidbody>();
+        if (rb != null) { StopRB(rb); } else { Debug.Log("MAYBE NOT A SHOT"); }
+    }
+
+    private static void StopRB(Rigidbody rb)
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
+
+    public static void DisableGameObject(GameObject gob)
+    {
+        gob.SetActive(false);
+        gob.GetComponent<Renderer>().enabled = false;
+        gob.transform.position = Vector3.zero;
     }
 }

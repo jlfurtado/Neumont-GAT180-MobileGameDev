@@ -16,6 +16,9 @@ public class DisableWhenBelow : MonoBehaviour {
             isMeGone = true;
         }
     }
+
+    public bool Gone() { return isMeGone; }
+
     public void Reset()
     {
         isMeGone = false;
@@ -27,8 +30,7 @@ public class DisableWhenBelow : MonoBehaviour {
         DoNotifyDestroyIfShould();
         DoSubtractRequiredIfShould();
 
-        gameObject.SetActive(false);
-        gameObject.GetComponent<Renderer>().enabled = false;
+        LevelManager.DisableGameObject(gameObject);
     }
 
     private void DoGiveScoreForThisIfShould()

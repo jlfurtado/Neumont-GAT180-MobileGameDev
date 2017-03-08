@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 
             bullets[i].GetComponent<NotifyWhenDestroyed>().levelManager = levelManager;
             bullets[i].GetComponent<ResetMeIfNotMoving>().levelManager = levelManager;
-            DisableGameObject(bullets[i]);
+            LevelManager.DisableGameObject(bullets[i]);
         }
 	}
 	
@@ -67,24 +67,35 @@ public class PlayerController : MonoBehaviour {
     {
         float launchStrength = GetLaunchStrength();
         Vector3 launchDirection = this.transform.rotation * Vector3.up;
-        Vector3 launchPos = transform.position + launchDirection * OffsetInLaunchDir;
 
-        int newBullet = levelManager.GetNextShotIndex();
+        int newBullet = GetNextShotIndex();
+        if (newBullet < 0 || newBullet > bullets.Length) { return; }
+
         EnableGameObject(bullets[newBullet]);
-        bullets[newBullet].transform.position = launchPos;
-
+        bullets[newBullet].transform.position = GetLaunchPos();
         Rigidbody rb = bullets[newBullet].GetComponent<Rigidbody>();
-        StopRB(rb);
+        LevelManager.ResetShotCompletely(bullets[newBullet]);
 
         rb.AddForce(launchDirection * launchStrength * LaunchForceStrength);
         levelManager.OnFireShot();
     }
 
-    private void StopRB(Rigidbody rb)
+    private int GetNextShotIndex()
     {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+        for (int i = 0; i < bullets.Length; ++i)
+        {
+            if (!bullets[i].GetComponent<DisableWhenBelow>().Gone() && !bullets[i].active) { return i; }
+        }
+
+        return -1;
     }
+
+    public Vector3 GetLaunchPos()
+    {
+        Vector3 launchDirection = this.transform.rotation * Vector3.up;
+        return transform.position + launchDirection * OffsetInLaunchDir;
+    }
+
 
     public float GetLaunchStrength()
     {
@@ -109,9 +120,4 @@ public class PlayerController : MonoBehaviour {
         objectToEnable.GetComponent<Renderer>().enabled = true;
     }
 
-    private void DisableGameObject(GameObject objectToDisable)
-    {
-        objectToDisable.SetActive(false);
-        objectToDisable.GetComponent<Renderer>().enabled = false;
-    }
 }
