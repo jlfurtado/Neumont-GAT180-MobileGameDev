@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour {
     public float VerticalRotateSpeed = 1.0f;
     public float OffsetInLaunchDir = 1.75f;
     public float LaunchForceStrength = 25.0f;
+    public float launchVertOffset = 1.0f;
     public GameObject projectilePrefab;
     public LevelManager levelManager;
 
     private float timer = 0.0f;
-    private float totalRotationX = 45.0f;
+    private float totalRotationX = 0.0f;
     private float totalRotationY = 0.0f;
 
     private const float maxRotationY = 90.0f;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     private const float minFireHoldTime = 0.1f;
     //private const float fireScaleThreshold = maxPowerHoldTime - minFireHoldTime;
     private GameObject[] bullets;
+    public GameObject cannonTube;
 
     // Use this for initialization
     void Start () {
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour {
             bullets[i].GetComponent<ResetMeIfNotMoving>().levelManager = levelManager;
             LevelManager.DisableGameObject(bullets[i]);
         }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -66,7 +68,7 @@ public class PlayerController : MonoBehaviour {
     private void MakeShot()
     {
         float launchStrength = GetLaunchStrength();
-        Vector3 launchDirection = this.transform.rotation * Vector3.up;
+        Vector3 launchDirection = cannonTube.transform.rotation * Vector3.up;
 
         int newBullet = GetNextShotIndex();
         if (newBullet < 0 || newBullet > bullets.Length) { return; }
@@ -92,8 +94,8 @@ public class PlayerController : MonoBehaviour {
 
     public Vector3 GetLaunchPos()
     {
-        Vector3 launchDirection = this.transform.rotation * Vector3.up;
-        return transform.position + launchDirection * OffsetInLaunchDir;
+        Vector3 launchDirection = cannonTube.transform.rotation * Vector3.up;
+        return transform.position + launchDirection * OffsetInLaunchDir + new Vector3(0.0f, launchVertOffset, 0.0f);
     }
 
 
@@ -110,8 +112,11 @@ public class PlayerController : MonoBehaviour {
         totalRotationX = Mathf.Clamp(totalRotationX + vertical * VerticalRotateSpeed, minRotationY, maxRotationY);
         totalRotationY = Mathf.Clamp(totalRotationY + horizontal * HorizontalRotateSpeed, minRotationX, maxRotationX);
 
-        Vector3 rotation = new Vector3(totalRotationX, totalRotationY, 0.0f);
-        this.transform.rotation = Quaternion.Euler(rotation);
+        Vector3 rotationForBoth = new Vector3(0.0f, totalRotationY, 0.0f);
+        Vector3 rotationForTop = new Vector3(totalRotationX, totalRotationY, 0.0f);
+        this.transform.rotation = Quaternion.Euler(rotationForBoth);
+        cannonTube.transform.rotation = Quaternion.Euler(rotationForTop);
+
     }
 
     private void EnableGameObject(GameObject objectToEnable)
