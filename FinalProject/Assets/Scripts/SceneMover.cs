@@ -56,4 +56,9 @@ public class SceneMover : MonoBehaviour {
     {
         SceneManager.LoadScene(Strings.HOW_TO_PLAY_SCENE_NAME);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
