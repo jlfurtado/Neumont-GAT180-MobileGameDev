@@ -9,52 +9,51 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1918826950815452}
+  m_RootGameObject: {fileID: 1802452204847488}
   m_IsPrefabParent: 1
---- !u!1 &1918826950815452
+--- !u!1 &1802452204847488
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4781308970618806}
-  - component: {fileID: 114393210918548040}
-  - component: {fileID: 82771528826256368}
+  - component: {fileID: 4114508175698518}
+  - component: {fileID: 82661070732612292}
   m_Layer: 0
-  m_Name: LevelManager
-  m_TagString: Untagged
+  m_Name: BackgroundMusic
+  m_TagString: TitleMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4781308970618806
+--- !u!4 &4114508175698518
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918826950815452}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 4.5}
+  m_GameObject: {fileID: 1802452204847488}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82771528826256368
+--- !u!82 &82661070732612292
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918826950815452}
+  m_GameObject: {fileID: 1802452204847488}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 84a1c5408049fa7438600e2a021559a8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 439afa86774f0dd42bc12c3db6c93ccf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -121,22 +120,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114393210918548040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918826950815452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f571b2c9dd6b064080a672d998cb231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shotsRemainingText: {fileID: 0}
-  goldCubesRemainingText: {fileID: 0}
-  pointsPerExtraBall: 1000
-  sceneMover: {fileID: 114487931468631924, guid: fbb4a5b964c998b428e1a5dd94ec3313,
-    type: 2}
-  scoreManager: {fileID: 0}
-  maxShots: 5
-  totalRequiredObjects: 3

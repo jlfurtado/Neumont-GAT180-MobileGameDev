@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour {
     {
         scoreValue += value;
         SetScoreText();
-        bonusText.ResetText(value, displayTime);
+        bonusText.ResetText(value, displayTime, 100.0f);
     }
 
     private void SetScoreText()

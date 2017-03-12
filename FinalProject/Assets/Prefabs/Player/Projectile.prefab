@@ -125,6 +125,8 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   threshold: 0.5
   thresholdTime: 3
+  lerpToColor: {r: 1, g: 0.84313726, b: 0, a: 1}
+  particles: {fileID: 0}
 --- !u!114 &114429140338617198
 MonoBehaviour:
   m_ObjectHideFlags: 1

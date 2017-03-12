@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour {
-
     public float HorizontalRotateSpeed = 1.0f;
     public float VerticalRotateSpeed = 1.0f;
     public float OffsetInLaunchDir = 1.75f;
     public float LaunchForceStrength = 25.0f;
     public float launchVertOffset = 1.0f;
     public GameObject projectilePrefab;
+    public GameObject particlePrefab;
     public LevelManager levelManager;
 
     private float timer = 0.0f;
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour {
     private GameObject[] bullets;
     public GameObject cannonTube;
 
+    private AudioSource audio;
+
     // Use this for initialization
     void Start () {
         bullets = new GameObject[levelManager.maxShots];
@@ -36,8 +39,17 @@ public class PlayerController : MonoBehaviour {
 
             bullets[i].GetComponent<NotifyWhenDestroyed>().levelManager = levelManager;
             bullets[i].GetComponent<ResetMeIfNotMoving>().levelManager = levelManager;
+
+            GameObject particles = Instantiate(particlePrefab);
+            //particles.transform.parent = bullets[i].transform;
+
+            bullets[i].GetComponent<ResetMeIfNotMoving>().particles = particles;
+
             LevelManager.DisableGameObject(bullets[i]);
+            LevelManager.DisableGameObject(particles);
         }
+
+        audio = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -80,6 +92,7 @@ public class PlayerController : MonoBehaviour {
 
         rb.AddForce(launchDirection * launchStrength * LaunchForceStrength);
         levelManager.OnFireShot();
+        audio.Play();
     }
 
     private int GetNextShotIndex()

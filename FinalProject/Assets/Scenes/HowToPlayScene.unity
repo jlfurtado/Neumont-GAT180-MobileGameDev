@@ -160,7 +160,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: " - WASD - Move\n - Hold space to fire\n - Knock over Gold Cubes to win\n
     - Red cubes deduct points\n - Green cubes award points\n - Mouse wheel to zoom
-    in/out"
+    in/out\n - Cannonballs that do not fall off the platform will be returned to you"
 --- !u!222 &473909391
 CanvasRenderer:
   m_ObjectHideFlags: 0

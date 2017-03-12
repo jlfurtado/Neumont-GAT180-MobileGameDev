@@ -16,6 +16,6 @@ static class Strings
     public static string LEVEL_LOST_SCENE_NAME = "LevelLostScene";
     public static string HOW_TO_PLAY_SCENE_NAME = "HowToPlayScene";
     public static string[] HIGH_SCORE_KEYS = { "HighScoreLVL1", "HighScoreLVL2", "HighScoreLVL3", "HighScoreLVL4" };
-
+    public static string TITLE_MUSIC_TAG = "TitleMusic";
 }
 

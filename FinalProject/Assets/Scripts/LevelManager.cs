@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class LevelManager : MonoBehaviour {
     public Text shotsRemainingText;
     public Text goldCubesRemainingText;
@@ -16,9 +17,11 @@ public class LevelManager : MonoBehaviour {
     private int currentRequiredObjectsLeft;
     private const float loseWinCheckTime = 3.0f;
     private bool didWinOrLose = false;
+    private AudioSource audio;
 
     // Use this for initialization
     void Start() {
+        audio = GetComponent<AudioSource>();
         shotsToDie = 0;
         currentShots = maxShots;
         SetShotText();
@@ -74,6 +77,7 @@ public class LevelManager : MonoBehaviour {
         SetShotText();
 
         DisableGameObject(shot);
+        audio.Play();
     }
 
     private void SetShotText()
